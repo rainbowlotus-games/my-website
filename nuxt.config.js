@@ -1,5 +1,6 @@
 export default {
-  mode: 'spa',
+  target: 'server',
+  ssr: true,
   /*
    ** Headers of the page
    */
@@ -31,7 +32,6 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
   /*
    ** Build configuration
    */
