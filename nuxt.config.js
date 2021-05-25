@@ -32,6 +32,45 @@ export default {
   /*
    ** Nuxt.js modules
    */
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    // https://go.nuxtjs.dev/typescript
+    '@nuxt/typescript-build',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/fontawesome',
+  ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+    // https://go.nuxtjs.dev/pwa
+    '@nuxtjs/pwa'
+  ],
+
+  styleResources: {
+    scss: [
+      './assets/scss/vars/*.scss',
+      './assets/scss/abstracts/_mixins.scss' // use underscore "_" & also file extension ".scss"
+      ]
+  },
+
+  fontawesome: {
+    icons: {
+      solid: ['faBars', 'faArrowCircleDown', 'faArrowAltCircleDown'],
+    }
+  },
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {},
+
+  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  pwa: {
+    manifest: {
+      lang: 'en'
+    }
+  },
+
   /*
    ** Build configuration
    */
