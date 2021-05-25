@@ -38,6 +38,7 @@ export default {
     '@nuxt/typescript-build',
     '@nuxtjs/style-resources',
     '@nuxtjs/fontawesome',
+    '@nuxtjs/google-fonts',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -53,6 +54,13 @@ export default {
       './assets/scss/vars/*.scss',
       './assets/scss/abstracts/_mixins.scss' // use underscore "_" & also file extension ".scss"
       ]
+  },
+
+  googleFonts: {
+    families: {
+      Overpass: [800],
+      Chivo: [300, 400, 700],
+    }
   },
 
   fontawesome: {

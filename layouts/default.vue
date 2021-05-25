@@ -5,8 +5,6 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700&family=Overpass:wght@800&display=swap');
-
 html {  
   font-family:
     'Chivo',
