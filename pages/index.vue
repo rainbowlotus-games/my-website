@@ -29,9 +29,13 @@
         </div>
         <!-- <div class="vertical-divider"></div> -->
         <div class="greeting">
-          <h1>Hello,</h1>
-          <h2>I'm Paul</h2>
-          <h3>web designer & student</h3>
+          <div class="hello">
+            <h1>Hello,</h1>
+            <h2>I'm Paul</h2>
+          </div>
+          <div class="title">
+            <h3>web designer & student</h3>
+          </div>
         </div>
       </div>
       <div class="arrow-down">
@@ -156,29 +160,34 @@ export default Vue.extend({
   .greeting {
     padding-left: 3rem;
 
-    h3 {
-      padding: 0.125em 0.25em 0.125em 0.25em;
-      font-family: Chivo;
-      font-weight: 400;
-      font-size: 2.75em;
-      letter-spacing: 0.125em;
-      background-color: $color_signal_alt;
+    .hello {
+      h1, h2 {
+        font-size: 8em;
+        font-family: 
+        Overpass,
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.08em;
+      }
     }
 
-    h1, h2 {
-      font-size: 8em;
-      font-family: 
-      Overpass,
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      'Helvetica Neue',
-      Arial,
-      sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.08em;
+    .title {
+      h3 {
+        padding: 0.125em 0.25em 0.125em 0.25em;
+        font-family: Chivo;
+        font-weight: 400;
+        font-size: 2.75em;
+        letter-spacing: 0.125em;
+        background-color: $color_signal_alt;
+      }
     }
+
   }
 }
 
@@ -248,6 +257,7 @@ export default Vue.extend({
   .menu {
     display: flex;
     flex-direction: column;
+    margin-top: 2vh;
 
     // Show menu icon, if mobile breakpoint was hit
     .mobile-menu-icon {
@@ -312,8 +322,9 @@ export default Vue.extend({
   }
 
   .home-card {
+    flex: 0;
     flex-direction: row-reverse;
-    padding-bottom: 20vh;
+    margin-top: 5vh;
 
     .face {
       display: none; // temporary. 
@@ -327,12 +338,43 @@ export default Vue.extend({
     }
 
     .greeting {
-      padding-left: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
 
-      h1, h2 {
-        font-size: 6em;
+      .hello {
+        h1, h2 {
+          font-size: 5em;
+          text-align: left;
+        }
+
+        h2 {
+          // Necessary because of font
+          // having a slight offset to the right
+          margin-right: 2vw;        
+          margin-bottom: -2vh;
+        }
+      }
+
+      .title {
+        width: 100%;
+        h3 {
+          font-size: 2em;
+          text-align: center;
+        }
       }
     }
+  }
+
+  .page {
+    border: none;
+  }
+  
+  .arrow-down {
+    margin-top: auto;
+    padding-bottom: 2vh;
   }
 }
 
