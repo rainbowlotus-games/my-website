@@ -57,22 +57,6 @@ export default Vue.extend({
   methods: {
     toggleMobileMenu() {
       this.mobileMenuOpen = !this.mobileMenuOpen
-
-      const menuItems = document.querySelector('.menu-items') as HTMLUListElement
-      //const menuIcon = document.querySelector('.mobile-menu-icon') as HTMLHtmlElement
-
-      /*if(this.mobileMenuOpen) {
-        // Show the menu-items again
-        menuItems.style.top = '0';
-        menuItems.style.zIndex = '3';        
-        menuItems.style.display = 'block';
-      }
-      else {
-        // Hide the menu-items again
-        menuItems.style.top = '-100px';
-        menuItems.style.zIndex = '0';
-        menuItems.style.display = 'flex';
-      }*/
     }
   },
   computed: {
@@ -101,7 +85,7 @@ export default Vue.extend({
     width: 100%;
     justify-content: space-between;
     padding: 0;
-    margin: 0 0 clamp(0.25em, 1em, 2em) 0;
+    //margin: 0 0 clamp(0.25em, 1em, 2em) 0;
    
     :last-child {
       margin-right: 0;
@@ -243,7 +227,10 @@ export default Vue.extend({
   width: 100vw;
   
   background-color: $color_primary;
-  border: clamp(1rem, 2rem, 4rem) solid $color_primary;
+
+  /*! autoprefixer: off */
+  border: clamp(1rem, 2rem, 4rem) solid $color_primary_darker;
+  /* autoprefixer: on */
 }
 
 .page-container {
