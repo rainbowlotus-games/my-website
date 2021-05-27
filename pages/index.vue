@@ -230,7 +230,7 @@ export default Vue.extend({
 
   border-width: clamp(1em, 2em, 4em);
   border-style: solid;
-  border-color: $color_primary_darker;
+  border-color: $color_primary;
 }
 
 .page-container {
