@@ -257,20 +257,22 @@ export default Vue.extend({
   .menu {
     display: flex;
     flex-direction: column;
-    margin-top: 2vh;
-
-    // Show menu icon, if mobile breakpoint was hit
-    .mobile-menu-icon {
-      visibility: visible;
-    }
+    padding-top: 2vh;
   
     .menu-items {
       position: absolute;
       top: -100px;
+      z-index: 0;
+      display: flex;
+      opacity: 0;
     }
     
     .horizontal-divider {
       display: none;
+    }    
+
+    .mobile-menu-icon {
+      visibility: visible;
     }
   }
 
@@ -285,39 +287,36 @@ export default Vue.extend({
     bottom: 0;
     opacity: 1;
     background-color: rgba(0,0,0,0.5);
-    transition: 0.33s ease-in-out;
+    transition: all 0.33s ease-in-out;
     z-index: 2;
+    margin-top: 0;    
+    padding-top: 0;
 
     .menu-items {
-      position: static;
-
+      position: relative;
+      top: 0;
       display: flex;
       flex-direction: column;
+      opacity: 1;
+      transition: all 0.33s ease-in-out;
 
       .item-active, .item-inactive {
-        padding: 1.25em;
+        padding: 0;
         border-radius: 0;
         text-align: center;
 
-        margin-bottom: 1em;
+        border-bottom: 0.25em solid $color_black;
+
+        a {
+          display: block;
+          padding: 2.125em 1em 2.125em 1em;
+          font-size: 1em;
+        }
       }
 
       :last-child {
-        margin-bottom: 0;
+        border-bottom: none;
       }
-    }
-
-    .mobile-menu-icon {
-      visibility: visible;
-    }
-  }
-  .mobile-menu-closed {
-    visibility: hidden;
-
-    .menu-items {
-        top: -100px;
-        z-index: 0;
-        display: flex;
     }
   }
 
@@ -370,6 +369,10 @@ export default Vue.extend({
 
   .page {
     border: none;
+  }
+
+  .page-container {
+    //position: fixed;
   }
   
   .arrow-down {
