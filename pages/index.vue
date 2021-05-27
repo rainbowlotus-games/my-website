@@ -130,7 +130,7 @@ export default Vue.extend({
   }
 
   .mobile-menu-icon {
-    visibility: hidden;
+    opacity: 0;
 
     a {
       color: $color_white;
@@ -272,7 +272,7 @@ export default Vue.extend({
     }    
 
     .mobile-menu-icon {
-      visibility: visible;
+      opacity: 1;
     }
   }
 
@@ -317,6 +317,12 @@ export default Vue.extend({
       :last-child {
         border-bottom: none;
       }
+    }
+
+    .mobile-menu-icon {
+      //margin-top: 1em;
+      opacity: 1;
+      transition: all 0.33s linear;
     }
   }
 
