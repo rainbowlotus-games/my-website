@@ -228,9 +228,7 @@ export default Vue.extend({
   
   background-color: $color_primary;
 
-  /*! autoprefixer: off */
-  border: clamp(1rem, 2rem, 4rem) solid $color_primary_darker;
-  /* autoprefixer: on */
+  border: clamp(1em, 2em, 4em) solid $color_primary_darker;
 }
 
 .page-container {
