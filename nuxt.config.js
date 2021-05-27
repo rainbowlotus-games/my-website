@@ -65,7 +65,7 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faBars', 'faArrowCircleDown', 'faArrowAltCircleDown'],
+      solid: ['faBars', 'faArrowCircleDown', 'faArrowAltCircleDown', 'faTimes'],
     }
   },
 
