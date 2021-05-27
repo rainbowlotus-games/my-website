@@ -228,7 +228,9 @@ export default Vue.extend({
   
   background-color: $color_primary;
 
-  border: clamp(1em, 2em, 4em) solid $color_primary_darker;
+  border-width: clamp(1em, 2em, 4em);
+  border-style: solid;
+  border-color: $color_primary_darker;
 }
 
 .page-container {
