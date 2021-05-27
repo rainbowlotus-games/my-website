@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <div class="page-container">
+      <div v-if="mobileMenuOpen" class="menu-overlay" @click.stop="mobileMenuOpen && toggleMobileMenu()"></div>
       <div class="menu" 
         :class="{'mobile-menu-opened': mobileMenuOpen}"
         @click.stop="mobileMenuOpen && toggleMobileMenu()"
@@ -10,16 +11,14 @@
           <li class="item-inactive"><a href="#">WORK</a></li>
           <li class="item-inactive"><a href="#">ARTICLES</a></li>
           <li class="item-inactive"><a href="#">CONTACT</a></li>
+          <li class="mobile-menu-icon">
+            <font-awesome-layers class="fa-3x">
+              <a href="#" @click.stop="toggleMobileMenu()">
+                <font-awesome-icon :icon="activeMenuIcon != undefined ? activeMenuIcon : 'bars'"/>
+              </a>
+            </font-awesome-layers>
+          </li>
         </ul>
-
-        <div class="mobile-menu-icon">
-          <font-awesome-layers class="fa-3x">
-            <a href="#" @click.stop="toggleMobileMenu()">
-              <font-awesome-icon :icon="activeMenuIcon != undefined ? activeMenuIcon : 'bars'"/>
-            </a>
-          </font-awesome-layers>
-        </div>
-
         <div class="horizontal-divider"></div>
       </div>
 
@@ -90,12 +89,8 @@ export default Vue.extend({
     justify-content: space-between;
     padding: 0;
     //margin: 0 0 clamp(0.25em, 1em, 2em) 0;
-   
-    :last-child {
-      margin-right: 0;
-    }
 
-    li {
+    .item-active, .item-inactive {
       //row-gap: 1em;
       //margin-right: 1em;
       //flex-grow: 1;
@@ -128,13 +123,13 @@ export default Vue.extend({
       background-color: $color_primary_lighter;
     }
   }
+}
 
-  .mobile-menu-icon {
-    opacity: 0;
+.mobile-menu-icon {
+  display: none;
 
-    a {
-      color: $color_white;
-    }
+  a {
+    color: $color_white;
   }
 }
 
@@ -254,29 +249,7 @@ export default Vue.extend({
 }
 
 @media (max-width: $breakpoint-phone) {
-  .menu {
-    display: flex;
-    flex-direction: column;
-    padding-top: 2vh;
-  
-    .menu-items {
-      position: absolute;
-      top: -100px;
-      z-index: 0;
-      display: flex;
-      opacity: 0;
-    }
-    
-    .horizontal-divider {
-      display: none;
-    }    
-
-    .mobile-menu-icon {
-      opacity: 1;
-    }
-  }
-
-  .mobile-menu-opened {
+  .menu-overlay {
     overflow: hidden;
     position: absolute;
     width: 100vw;
@@ -288,24 +261,54 @@ export default Vue.extend({
     opacity: 1;
     background-color: rgba(0,0,0,0.5);
     transition: all 0.33s ease-in-out;
-    z-index: 2;
+    z-index: 1;
     margin-top: 0;    
     padding-top: 0;
+  }
+
+  .menu {
+    position: fixed; // would otherwise make rest of page move up once menu is opened
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+  
+    .menu-items {
+      position: absolute;
+      top: -200px;
+
+      .item-active , .item-inactive {
+        opacity: 0;
+      }
+
+      .mobile-menu-icon {
+        position: relative;
+        top: 200px;
+        z-index: 2;
+      }
+    }
+    
+    .horizontal-divider {
+      display: none;
+    }
+  }
+
+  .mobile-menu-opened {
+    z-index: 2;
 
     .menu-items {
       position: relative;
       top: 0;
       display: flex;
       flex-direction: column;
-      opacity: 1;
       transition: all 0.33s ease-in-out;
 
       .item-active, .item-inactive {
+        display: inline-block;
+        opacity: 1;
         padding: 0;
         border-radius: 0;
         text-align: center;
-
-        border-bottom: 0.25em solid $color_black;
 
         a {
           display: block;
@@ -314,22 +317,29 @@ export default Vue.extend({
         }
       }
 
+      .mobile-menu-icon {
+        justify-content: center;
+        margin-top: 1em;
+        position: static;
+        z-index: 2;
+      }
+
       :last-child {
         border-bottom: none;
       }
     }
+  }
 
-    .mobile-menu-icon {
-      //margin-top: 1em;
-      opacity: 1;
-      transition: all 0.33s linear;
-    }
+  .mobile-menu-icon {
+    display: flex;
+    //transition: all 0.33s linear;
+    box-shadow: none;
   }
 
   .home-card {
     flex: 0;
     flex-direction: row-reverse;
-    margin-top: 5vh;
+    margin-top: 12vh;
 
     .face {
       display: none; // temporary. 
