@@ -18,7 +18,6 @@
           </font-awesome-layers>
         </li>
       </ul>
-      <div class="horizontal-divider"></div>
     </div>
   </div>
 </template>
@@ -117,6 +116,12 @@ export default Vue.extend({
   }
 }
 
+// Small phones in landscape need bigger buttons / or maybe also the dropdown menu?
+@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) and (orientation: landscape) {
+  * {
+    background: green;
+  }
+}
 
 @media (max-width: $breakpoint-phone) {
   .menu-overlay {
@@ -220,4 +225,34 @@ export default Vue.extend({
     box-shadow: none;
   }
 }
+
+
+
+@media (min-width: $breakpoint-tablet) {
+  .menu {
+    min-height: 3em;
+
+    .menu-items {
+      padding: 0;
+      margin: 0;
+      min-height: 3em; // min-height: 3em
+
+      .item-active, .item-inactive {
+        flex: 1;
+        margin-right: 1em;
+
+        a {
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      :nth-last-child(2) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
 </style>
