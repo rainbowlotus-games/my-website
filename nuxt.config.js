@@ -1,6 +1,7 @@
 export default {
   target: 'server',
   ssr: true,
+  components: true,
   /*
    ** Headers of the page
    */
