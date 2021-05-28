@@ -1,7 +1,6 @@
 <template>
   <div class="page">
     <div class="page-container">
-      
       <Menu />
 
       <div class="home-card">

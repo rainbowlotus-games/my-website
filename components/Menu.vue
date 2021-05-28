@@ -12,9 +12,9 @@
         <li class="item-inactive"><a href="#">CONTACT</a></li>
         <li class="mobile-menu-icon">
           <font-awesome-layers class="fa-3x">
-            <a href="#" @click.stop="toggleMobileMenu()">
+            <button @click.stop="toggleMobileMenu()">
               <font-awesome-icon :icon="activeMenuIcon != undefined ? activeMenuIcon : 'bars'"/>
-            </a>
+            </button>
           </font-awesome-layers>
         </li>
       </ul>
@@ -112,7 +112,7 @@ export default Vue.extend({
 .mobile-menu-icon {
   display: none;
 
-  a {
+  button {
     color: $color_white;
   }
 }
@@ -152,9 +152,22 @@ export default Vue.extend({
       }
 
       .mobile-menu-icon {
-        position: relative;
-        top: 200px;
+        position: fixed;
+        top: 0;
+        right: 0;
         z-index: 2;
+
+        button {
+          border: 0;
+          padding: 0;
+          height: 100%;
+          width: 100%;
+          background: transparent;
+          font-size: 100%;
+          font-family: inherit;
+          cursor: pointer;
+          color: $color_white;
+        }
       }
     }
     
@@ -163,6 +176,7 @@ export default Vue.extend({
     }
   }
 
+// Styling for when the menu is opened
   .mobile-menu-opened {
     z-index: 2;
 
