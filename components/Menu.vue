@@ -42,6 +42,18 @@ export default Vue.extend({
       return this.mobileMenuOpen ? 'times' : 'bars'
     }
   },
+  watch: {
+    mobileMenuOpen: function() {
+      console.log("mobileMenuOpen")
+
+      if(this.mobileMenuOpen){
+        document.documentElement.style.overflow = 'hidden'
+        return
+      }
+
+      document.documentElement.style.overflow = 'auto'
+    }
+  }
 })
 </script>
 
